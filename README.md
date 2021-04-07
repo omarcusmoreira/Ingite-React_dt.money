@@ -3,12 +3,13 @@ dt.money
 Desenvolvido em React (Typescript) onde foram colocados em prática os seguintes conhecimentos:
 
 CSS
-- Componentes
-- Styled Components
+- Styled Components (Show de bola!)
 
 React
+
+- Componentes
 - Typescipt
-- ContextAPI
+- ContextAPI (Adeus Redux!)
 - Hooks
 - MirageJS
 - Axios
