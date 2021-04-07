@@ -1,8 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createServer, Model } from 'miragejs'
+
+createServer({
+
+  models: {
+    transaction: Model
+  },
+
+  seeds(server){
+    server.db.loadData({
+      transactions:[
+        {
+          id: 1,
+          title: 'Desenvolvimento de Website',
+          amount:'12000',
+          type:'deposit',
+          category:'dev',
+          createdAt:new Date('2021-04-05 19:20:00')
+        },
+        {
+          id: 2,
+          title: 'Financiamento',
+          amount:'1200',
+          type:'withdraw',
+          category:'contas',
+          createdAt:new Date('2021-04-05 14:10:00')
+        }
+      ]
+    })
+  },
+
+  routes(){
+    this.namespace = 'api';
+
+    this.get('/transactions', () => {
+      return this.schema.all('transaction')
+
+    })
+
+    this.post('/transactions', (schema, request) => {
+      const data = JSON.parse(request.requestBody)
+
+      return schema.create('transaction', data)
+    })
+  }
+})
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,8 +54,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
