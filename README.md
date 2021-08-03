@@ -9,7 +9,7 @@ React
 
 - Componentes
 - Typescipt
-- ContextAPI (Adeus Redux!)
+- ContextAPI
 - Hooks
 - MirageJS
 - Axios
